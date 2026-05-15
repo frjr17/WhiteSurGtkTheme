@@ -187,3 +187,12 @@
 .popup-menu-player-icons-icon {
   background: $divider_color !important;
 }
+
+
+/* Remove dash border */
+#dash .dash-background,
+#dashtodockContainer .dash-background,
+.dash-background {
+  border: none !important;
+  box-shadow: none !important;
+}
