@@ -336,7 +336,7 @@ $panel_height: $menuitem_size;
   &.unlock-screen,
   &.login-screen,
   &.lock-screen {
-    background-color: transparent;
+    background-color: if($darker == 'true', black, transparent);
     box-shadow: none;
 
     StLabel, StIcon { color: $light_alt_fg_color; }
@@ -344,11 +344,11 @@ $panel_height: $menuitem_size;
     .panel-button {
       &:hover {
         color: $light_fg_color;
-        background-color: $light_divider_color;
+        background-color: if($darker == 'true', rgba(black, 0.65), $light_divider_color);
 
         &.clock-display {
           .clock {
-            background-color: $light_divider_color;
+            background-color: if($darker == 'true', rgba(black, 0.65), $light_divider_color);
           }
         }
       }
@@ -356,12 +356,12 @@ $panel_height: $menuitem_size;
       &:active, &:overview, &:focus, &:checked {
         &, &:hover {
           color: $light_fg_color;
-          background-color: $light_track_color;
+          background-color: if($darker == 'true', rgba(black, 0.75), $light_track_color);
         }
 
         &.clock-display {
           .clock {
-            background-color: $light_track_color;
+            background-color: if($darker == 'true', rgba(black, 0.75), $light_track_color);
           }
         }
       }
@@ -391,7 +391,7 @@ $panel_height: $menuitem_size;
 
     .panel-corner {
       -panel-corner-radius: 0;
-      -panel-corner-background-color: transparent;
+      -panel-corner-background-color: if($darker == 'true', black, transparent);
       -panel-corner-border-color: transparent;
     }
   }
