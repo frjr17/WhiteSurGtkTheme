@@ -47,6 +47,7 @@ if has_command gnome-shell; then
     GNOME_VERSION="3-28"
   fi
 else
+  SHELL_VERSION="48"
   GNOME_VERSION="48-0"
 fi
 
@@ -69,11 +70,16 @@ DASH_TO_DOCK_DIR_HOME="${MY_HOME}/.local/share/gnome-shell/extensions/dash-to-do
 GNOME_SHELL_EXTENSION_DIR="${MY_HOME}/.local/share/gnome-shell/extensions"
 FIREFOX_SRC_DIR="${REPO_DIR}/other/firefox"
 FIREFOX_DIR_HOME="${MY_HOME}/.mozilla/firefox"
-FIREFOX_THEME_DIR="${MY_HOME}/.mozilla/firefox/firefox-themes"
+
+if [[ -d "$HOME/.config/mozilla/firefox" ]]; then
+  FIREFOX_DIR_HOME="${MY_HOME}/.config/mozilla/firefox"
+fi
+
+FIREFOX_THEME_DIR="${FIREFOX_DIR_HOME}/firefox-themes"
 FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
-FIREFOX_FLATPAK_THEME_DIR="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox/firefox-themes"
+FIREFOX_FLATPAK_THEME_DIR="${FIREFOX_FLATPAK_DIR_HOME}/.mozilla/firefox/firefox-themes"
 FIREFOX_SNAP_DIR_HOME="${MY_HOME}/snap/firefox/common/.mozilla/firefox"
-FIREFOX_SNAP_THEME_DIR="${MY_HOME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
+FIREFOX_SNAP_THEME_DIR="${FIREFOX_SNAP_DIR_HOME}/firefox-themes"
 export WHITESUR_TMP_DIR="/tmp/WhiteSur.lock"
 
 if [[ -w "/root" ]]; then
@@ -738,6 +744,18 @@ sudo() {
 
 udo() {
   local result="0"
+
+  if [[ "$(id -un)" == "${MY_USERNAME}" ]]; then
+    if [[ -p /dev/stdin ]]; then
+      "${@}" < /dev/stdin || result="${?}"
+    else
+      "${@}" || result="${?}"
+    fi
+
+    [[ "${result}" != "0" ]] && MACTAHOE_COMMAND="${*}"
+
+    return "${result}"
+  fi
 
   # Just in case. We put the prompt here to make it less annoying
   if ! ${SUDO_BIN} -u "${MY_USERNAME}" -n true &> /dev/null; then

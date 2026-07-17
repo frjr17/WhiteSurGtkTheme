@@ -200,14 +200,59 @@ toolbarspring {
 
 .urlbar-page-action,
 #urlbar-go-button,
-.urlbar-go-button,
+.urlbar-go-button:not(.urlbar-icon),
 .search-go-button,
-#tracking-protection-icon-container {
+#notification-popup-box,
+#tracking-protection-icon-container,
+#trust-icon-container {
+	background-color: var(--gnome-urlbar-background) !important; 
 	width: 28px !important;
 	height: 26px !important;
 	margin: 3px 0 !important;
-	padding: 4px 6px !important;
+	padding: 6px !important;
 	border-radius: 5px !important;
+}
+
+#trust-icon-container.insecure #trust-label {
+	display: none !important;
+}
+
+.urlbar-page-action {
+	padding: 5px 6px !important;
+}
+
+.urlbar-go-button.urlbar-icon {
+	width: 16px !important;
+	height: 16px !important;
+	padding: 7px !important;
+	border-radius: 5px !important;
+	margin: 3px 0 !important;
+	background: none !important;
+}
+
+#tracking-protection-icon-container:hover,
+.urlbar-page-action:hover,
+#urlbar-go-button:hover,
+.urlbar-go-button:hover,
+.search-go-button:hover,
+#trust-icon-container:hover,
+#identity-box:hover {
+	background: var(--gnome-headerbar-button-hover-background) !important;
+}
+
+#tracking-protection-icon-container:active,
+#tracking-protection-icon-container[open="true"],
+.urlbar-page-action:active,
+#urlbar-go-button:active,
+.urlbar-go-button:active,
+.search-go-button:active,
+#trust-icon-container:active,
+#identity-box:active {
+	background: var(--gnome-headerbar-button-active-background) !important;
+}
+
+#identity-box.extensionPage #identity-icon-label {
+	visibility: collapse !important;
 }
 
 #identity-box {
@@ -219,32 +264,29 @@ toolbarspring {
 	margin-left: 0 !important;
 }
 
-#tracking-protection-icon-container:hover,
-.urlbar-page-action:hover,
-#urlbar-go-button:hover,
-.urlbar-go-button:hover,
-.search-go-button:hover,
-#identity-box:hover {
-	background: var(--gnome-headerbar-button-hover-background) !important;
-}
-
-#tracking-protection-icon-container:active,
-#tracking-protection-icon-container[open="true"],
-.urlbar-page-action:active,
-#urlbar-go-button:active,
-.urlbar-go-button:active,
-.search-go-button:active,
-#identity-box:active {
-	background: var(--gnome-headerbar-button-active-background) !important;
-}
-
 .identity-box-button {
 	border-radius: 5px !important;
 	background: none !important;
 }
 
-#identity-box.extensionPage #identity-icon-label {
-	visibility: collapse !important;
+#main-button .button-background.labelled {
+	min-height: 26px !important;
+	min-width: 28px !important;
+	background: var(--gnome-headerbar-button-hover-background) !important;
+	border: none !important;
+	border-radius: 5px !important;
+	outline: 0 !important;
+	margin: 0 !important;
+	padding: 0 9px !important;
+}
+
+@media -moz-pref("browser.urlbar.trustPanel.featureGate") {
+	#trust-icon-container {
+		border-radius: 5px !important;
+		/* min-height: 26px !important;
+		min-width: 28px !important; */
+		margin: 3px 0 !important;
+	}
 }
 
 /* Search mode switcher */
