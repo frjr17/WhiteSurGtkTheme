@@ -54,9 +54,10 @@ Run the included wrapper as your desktop user:
 ./install-oled.sh
 ```
 
-This installs and activates the solid dark GTK and fixed libadwaita themes,
-loads the matching GNOME Shell theme, and prevents Blur My Shell from
-overriding the top-panel background. Do not run it with `sudo`.
+This installs and activates the solid dark GTK and fixed libadwaita themes and
+loads the matching GNOME Shell theme. Blur My Shell's panel settings are
+temporarily suspended during activation and then restored to their original
+values. Do not run it with `sudo`.
 
 ### Uninstall
 
