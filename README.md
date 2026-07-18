@@ -46,6 +46,18 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 
 2. Run `./install.sh` to install the default WhiteSur GTK theme pack.
 
+### OLED-black install
+
+Run the included wrapper as your desktop user:
+
+```bash
+./install-oled.sh
+```
+
+This installs and activates the solid dark GTK and fixed libadwaita themes,
+loads the matching GNOME Shell theme, and prevents Blur My Shell from
+overriding the top-panel background. Do not run it with `sudo`.
+
 ### Uninstall
 
 - uninstall Gtk themes: `./install.sh -r`
