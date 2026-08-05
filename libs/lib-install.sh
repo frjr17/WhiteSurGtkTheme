@@ -1083,6 +1083,10 @@ gtk_base() {
     sed $SED_OPT "/\$scheme/s/standard/nord/"                                   "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
     accent_type="fixed"
   fi
+
+  if [[ "${full_black}" == 'true' ]]; then
+    accent_type="fixed"
+  fi
 }
 
 libadwaita_base() {
@@ -1125,6 +1129,12 @@ customize_theme() {
   if [[ "${darker}" == 'true' ]]; then
     prompt -s "Changing dark color style to darker one ...\n"
     sed $SED_OPT "/\$darker/s/false/true/"                                      "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Full black background mode
+  if [[ "${full_black}" == 'true' ]]; then
+    prompt -s "Changing background colors to full black ...\n"
+    sed $SED_OPT "/\$full_black/s/false/true/"                                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus sidarbar size

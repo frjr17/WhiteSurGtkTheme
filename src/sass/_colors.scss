@@ -39,6 +39,11 @@ $hint_fg_color:                     if($variant == 'light', #565656, #999999);
   $hint_fg_color:                   if($variant == 'light', #495265, #8994a9);
 }
 
+@if $full_black == 'true' and $variant == 'dark' {
+  $base_color: #000000;
+  $bg_color:   #000000;
+}
+
 //insensitive state derived colors
 $disabled_fg_color:                 if($variant == 'light', rgba($fg_color, 0.45), rgba($fg_color, 0.35));
 $alt_disabled_fg_color:             if($variant == 'light', rgba($alt_fg_color, 0.45), rgba($alt_fg_color, 0.35));
@@ -99,6 +104,11 @@ $selected_bg_color:                 if($scheme == 'nord', $nord_color_default, $
 $primary_color:                     $selected_bg_color;
 
 $selected_borders_color:            darken($selected_bg_color, 10%);
+
+@if $full_black == 'true' and $variant == 'dark' {
+  $selected_borders_color: $selected_bg_color;
+}
+
 $borders_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
 $light_borders_color:               if($variant == 'light', rgba(black, 0.08), rgba(white, 0.10));
 $dark_borders_color:                if($variant == 'light', rgba(black, 0.08), rgba(black, 0.15));
@@ -145,6 +155,10 @@ $header_fg:                         if($variant == 'light', #575757, #FDFDFD);
   $header_fg:                       if($variant == 'light', #57647f, #f8f9fc);
 }
 
+@if $full_black == 'true' and $variant == 'dark' {
+  $header_bg: #000000;
+}
+
 $dark_header_bg:                    if($trans == 'true', rgba($base_color, 0.96), $base_color);
 $header_bg_backdrop:                if($variant == 'light', gtkmix(black, $header_bg, 2%), gtkmix(black, $header_bg, 1%));
 $header_border:                     if($variant == 'light', gtkmix(black, $header_bg, 12%), gtkmix(black, $header_bg, 75%));
@@ -176,6 +190,10 @@ $opacity: 0.96;
   }
 }
 
+@if $full_black == 'true' and $variant == 'dark' {
+  $dark_sidebar_bg: if($trans == 'true', rgba(#000000, $opacity), #000000);
+}
+
 $dark_sidebar_fg:                   $text_color;
 $dark_sidebar_border:               if($variant == 'light', $solid_borders_color, gtkmix(black, $dark_sidebar_bg, 75%));
 $sidebar_theme_color:               gtkalpha(currentColor, 0.15);
@@ -193,6 +211,10 @@ $solid_osd_bg_color:                if($darker == 'true', #1a1a1a, #2a2a2a);
 
 @if $scheme == 'nord' {
   $solid_osd_bg_color:              if($darker == 'true', #16191e, #222730);
+}
+
+@if $full_black == 'true' and $variant == 'dark' {
+  $solid_osd_bg_color: #000000;
 }
 
 $osd_bg_color:                      if($trans == 'true', rgba($solid_osd_bg_color, $opacity), $solid_osd_bg_color);
@@ -249,6 +271,10 @@ $panel_bg:                          if($variant == 'light', #f1f1f1, if($darker 
   }
 }
 
+@if $full_black == 'true' and $variant == 'dark' {
+  $panel_bg: if($trans == 'true', rgba(#000000, $panel_opacity), #000000);
+}
+
 $panel_text:                        if($variant == 'light', #363636, white);
 
 @if $scheme == 'nord' {
@@ -272,6 +298,10 @@ $dash_bg:                           if($variant == 'light', rgba(#d1d1d1, $panel
   @if $trans == 'true' and $panel_font == 'black' {
     $dash_bg:                       if($variant == 'light', rgba(#9da8be, $panel_opacity/2 + 0.28), rgba(if($darker == 'true', #1a1d24, #1d2027), $panel_opacity + 0.15));
   }
+}
+
+@if $full_black == 'true' and $variant == 'dark' {
+  $dash_bg: rgba(#000000, $panel_opacity/2 + 0.6);
 }
 
 // Entry colors

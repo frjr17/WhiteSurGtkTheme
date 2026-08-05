@@ -129,6 +129,9 @@ OPTIONS:
   --darker, --darkercolor 
    Install darker 'WhiteSur' dark themes. 
 
+  --fullblack, --pureblack 
+   Install full black 'WhiteSur' dark theme (pure #000000 backgrounds). 
+
   --dialog, --interactive 
    Run this installer interactively, with dialogs. 
 
